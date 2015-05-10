@@ -1,5 +1,5 @@
 $(document).ready(function(){
-  $("#addItem").click(function(){
-    $("body").append($("input[name=userInput]").val());
+  $("#addItemBtn").click(function(){
+    $("#mainBlock").append($("input[name=addedItem]").val());
   });
 });
