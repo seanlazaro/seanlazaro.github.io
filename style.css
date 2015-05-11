@@ -1,18 +1,19 @@
 h1{
-  text-align:center;
-  padding-top:0.5em;
-  padding-bottom:1em; 
+  font-size: 4em;
+  text-align: center;
+  padding-top: 0.25em;
+  padding-bottom: 0.5em; 
 }
 
 #mainCol{
-  border:solid black;
+  border: solid black;
 }
 
 h2{
-  text-align:center;
+  text-align: center;
 }
 
 #mainForm{
-  text-align:center;
-  margin-bottom:1em;
+  text-align: center;
+  margin-bottom: 1em;
 }
