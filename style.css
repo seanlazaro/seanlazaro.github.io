@@ -9,7 +9,7 @@ h1{
   top: 0;
   right: 0;
 }
-hr{
+#hr1{
   border-color: #bababa;
   margin-left: 3%;
   margin-right: 3%;
@@ -24,17 +24,23 @@ h2{
 }
 #mainForm{
   margin-bottom: 1em;
+  text-align: center;
 }
 [name="addedItem"]{
   display: inline-block;
   width: 85%;
 }
 #addItemBtn{
-  width: 14%
+  width: 5.5em;
+  height: 2.5em;
 }
 #toDoList{
   padding: 0;
   list-style-type: none;
+}
+.listEntry{
+  margin-bottom: 0.5em;
+  position: relative; /* used to position .entryCtrl */
 }
 .entryMain{
 	display: inline-block;
@@ -42,39 +48,63 @@ h2{
 	padding-right: 1%;
 }
 .entryDesc{
-  position: relative;
+  position: relative; /* used to position .dueInput */
 }
-.dueInput{
-  position: relative;
-  top: -1.80em;
+.dueInput{ /* positions datepicker */
+  position: absolute;
+  top: -3.55em;
   z-index: 1;
 }
-.dueTag{
+.tag{
   display: inline-block;
-  top: 0;
-  float: left;
-  text-align: center;
-  background-color: #d4d4d4;
+  background-color: #b2b2b2;
+  color: white;
+  font-size: 0.85em;
   padding-left: 0.5em;
   padding-right: 0.5em;
   border-radius: 10%;
+  margin-right: 0.25em;
+  margin-bottom: 0.25em;
 }
-.entryControl{
+.dueTag{
+  background-color: #6b6b6b;
+}
+.addTag{
+  position: absolute;
+  right: 0;
+  top: -1.7em;
+  z-index: 1;
+}
+.addTagBtn{
+  margin-left: 0.5em;
+}
+.entryCtrl{
   display: inline-block;
   width: 15%;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
 }
 .rmvItemBtn{
   display: inline-block;
-  width: 50%;
+  width: 33%;
   text-align: center;
 }
 .dueBtn{
   display: inline-block;
-  width: 50%;
+  width: 33%;
   text-align: center;
 }
-.ui-datepicker{
-  position: absolute;
-  z-index: 1;
-  left:-13.5em;
+.showAddTag{
+  display: inline-block;
+  width: 33%;
+  text-align: center;
+}
+#hr2{
+  border-color: black;
+  margin-left: 3%;
+  margin-right: 3%;
+}
+#filterForm{
+  text-align: center;
 }
