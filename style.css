@@ -50,10 +50,13 @@ h2{
 .entryDesc{
   position: relative; /* used to position .dueInput */
 }
-.dueInput{ /* positions datepicker */
+.dueInput_disp{ /* positions datepicker */
   position: absolute;
   top: -3.55em;
   z-index: 1;
+}
+.dueInput_sort{
+  display: none;
 }
 .tag{
   display: inline-block;
@@ -107,4 +110,7 @@ h2{
 }
 #filterForm{
   text-align: center;
+}
+#sortBtn{
+  margin-right: 3em;
 }
