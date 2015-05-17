@@ -26,20 +26,24 @@
   <div class="row">
     <div class="col-md-6 col-md-offset-3" id="mainCol">
       <h2>To Do List</h2>
+      <input type="text" name="listName">
       <form role="form" id="mainForm">
         <input type="text" name="addedItem" class="form-control">
         <button type="button" id="addItemBtn">Add Item</button>
       </form>
       <ul id="toDoList">
       </ul>
-      <div class="listCtrl">
-        <hr id="hr2">
+      <hr id="hr2">
+      Show advanced options <input type="checkbox" name="advOptions">
+      <div id="listCtrl">
+        <button type="button" id="sortBtn">Sort</button>
         <form role="form" id="filterForm">
-          <button type="button" id="sortBtn">Sort</button>
-          <input type="text" name="filterInput">
+          <input type="text" placeholder="Important" name="filterInput">
           <button type="button" id="filterBtn">Filter</button>
-          <button type="button" id="removeFilter">Remove Filter</button>
         </form>
+        <button type="button" id="showAll">Show All</button>
+        <button type="button" id="toggleTags">Toggle Tags</button>
+        <button type="button" id="removeAll">Remove All</button>
       </div>
     </div>
   </div>
