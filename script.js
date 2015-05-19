@@ -1,6 +1,19 @@
+if(localStorage.getItem("numListEntries") === null){
+    localStorage.setItem("numListEntries", 0);
+}
+var numListEntries = Number(localStorage.getItem("numListEntries"));
+
 $(document).ready(function(){
+/* Startup Processes -------------------------------------------------------- */
+
+  if(localStorage.getItem("listName") !== null){
+    $("#mainCol h2").text(localStorage.getItem("listName"));
+  }
   $("input[name=listName]").hide();
+  loadList();
   $("#listCtrl").hide();
+
+/* Events and Handlers ------------------------------------------------------ */
 
   $("#mainCol h2").click(function(){
     $("input[name=listName]").show();
@@ -10,13 +23,15 @@ $(document).ready(function(){
   $("input[name=listName]").keypress(function(key){
     if(key.which === 13){
       $("#mainCol h2").text($(this).val());
+      localStorage.setItem("listName", $(this).val());
       $(this).hide();
     }
   });
 
   $("input[name=listName]").focusout(function(){
     if($(this).val() !== ""){
-      $("#mainCol h2").text($(this).val());  
+      $("#mainCol h2").text($(this).val());
+      localStorage.setItem("listName", $(this).val());  
     }
     $(this).hide();
   });
@@ -25,39 +40,17 @@ $(document).ready(function(){
     event.preventDefault();
   });
 
-  $("input[name=addedItem").keypress(function(key){
+  $("input[name=entryTxt]").keypress(function(key){
     if(key.which === 13){
-      $("#addItemBtn").trigger("click");
+      $("#addEntryBtn").trigger("click");
     }
   });
 
-	$("#addItemBtn").click(function(){
-		var entryTxt = "<li>" + $("input[name=addedItem]").val() + "</li>";
-    
-    var dueInput_disp = "<input type='text' name='dueInput_disp'>";
-    var dueInput_sort = "<input type='text' name='dueInput_sort'>";
-    var addTag = "<div class='addTag'>";
-    addTag += "<input type='text' placeholder='Important' name='tagInput'>";
-    addTag += "<span class='glyphicon glyphicon-plus addTagBtn'></span>";
-    addTag += "</div>";
-
-    var entryDesc = "<div class='entryDesc'>" + dueInput_disp + dueInput_sort + addTag + "</div>";
-
-    var entryMain = "<div class='entryMain'>" + entryTxt + entryDesc + "</div>";
-
-		var entryCtrl = "<div class='entryCtrl'>";
-		entryCtrl += "<span class='glyphicon glyphicon-time dueBtn'></span>";
-    entryCtrl += "<span class='glyphicon glyphicon-tags showAddTag'></span>";
-    entryCtrl += "<span class='glyphicon glyphicon-remove rmvItemBtn'></span>";
-		entryCtrl += "</div>"
-		
-		var listEntry = "<div class='listEntry'>" + entryMain + entryCtrl + "</div>";
-
-    $("#toDoList").append(listEntry);
-    $("input[name=addedItem]").val("");
-
-    $("input[name=dueInput_disp]").hide();
-    $(".addTag").hide();
+	$("#addEntryBtn").click(function(){
+    addEntry($("input[name=entryTxt]").val());
+    numListEntries++;
+    localStorage.setItem("numListEntries", numListEntries);
+    saveList();
   });
 
  	$(document).on("click", ".entryMain li", function(){
@@ -69,35 +62,15 @@ $(document).ready(function(){
     }
   });
 
-  $(document).on("click", ".rmvItemBtn", function(){
-  	$(this).parent().parent().remove();
-  });
-
-  $(document).on("click", ".dueBtn", function(){
-    $(this).parent().parent().find("input[name=dueInput_disp]").datepicker({
-      onSelect: function(input, inst){
-        $(this).parent().parent().find(".entryDesc").prepend("<div class='tag dueTag'>" + input + "</div>");
-        $(this).parent().parent().parent().addClass("due");
-        if($("#toDoList").hasClass("tags-hidden")){
-          $(".tag").hide();
-        }
-      },
-      dateFormat: "MM dd, yy",
-      altField: $(this).parent().parent().find("input[name=dueInput_sort]"),
-      altFormat: "yymmdd"
-    });
-    
-    if($(this).parent().parent().hasClass("due")){
-      $(this).parent().parent().removeClass("due");
-      $(this).parent().parent().find(".dueTag").remove();
+  $(document).on("click", ".tag", function(){
+    if($(this).hasClass("dueTag")){
+      $(this).parent().parent().parent().removeClass("due");
+    } else{
+      var tagClass = $(this).text();
+      $(this).parent().parent().parent().removeClass(tagClass);
     }
-    else{
-      $(this).parent().parent().find("input[name=dueInput_disp]").show().focus().hide();
-    }
-  });
-
-  $(document).on("click", ".showAddTag", function(){
-    $(this).parent().parent().find(".addTag").show();
+    $(this).remove();
+    saveList();
   });
 
   $(document).on("keypress", "input[name=tagInput]", function(key){
@@ -120,23 +93,46 @@ $(document).ready(function(){
     if(tag === ""){
       tag = "Important";
     }
-    if(!$(this).parent().parent().parent().parent().hasClass(tag.toLowerCase())){
-      $(this).parent().parent().append("<div class='tag'>" + tag + "</div>");
-      $(this).parent().parent().parent().parent().addClass(tag.toLowerCase());
+    addTag(tag, $(this).parent().parent().parent().parent());
+    saveList();
+  });
+
+  $(document).on("click", ".dueBtn", function(){
+    $(this).parent().parent().find("input[name=dueInput_disp]").datepicker({
+      onSelect: function(input, inst){
+        $(this).parent().parent().find(".entryDesc").prepend("<div class='tag dueTag'>" + input + "</div>");
+        $(this).parent().parent().parent().addClass("due");
+        if($("#toDoList").hasClass("tags-hidden")){
+          $(".tag").hide();
+        }
+        saveList();
+      },
+      dateFormat: "MM dd, yy",
+      altField: $(this).parent().parent().find("input[name=dueInput_sort]"),
+      altFormat: "yymmdd"
+    });
+    
+    if($(this).parent().parent().hasClass("due")){
+      $(this).parent().parent().removeClass("due");
+      $(this).parent().parent().find(".dueTag").remove();
+      saveList();
     }
-    $(this).parent().find("input[name=tagInput]").val("");
-    $(this).parent().hide();
-    if($("#toDoList").hasClass("tags-hidden")){
-      $(".tag").hide();
+    else{
+      $(this).parent().parent().find("input[name=dueInput_disp]").show().focus().hide();
     }
   });
 
-  $(document).on("click", ".tag", function(){
-    if($(this).parent().parent().parent().hasClass("due")){
-      $(this).parent().parent().parent().removeClass("due");
-    }
-    $(this).remove();
+  $(document).on("click", ".showAddTag", function(){
+    $(this).parent().parent().find(".addTag").show();
+    $(this).parent().parent().find("input[name=tagInput]").select();
   });  
+
+  $(document).on("click", ".rmvEntryBtn", function(){
+    $(this).parent().parent().remove();
+    numListEntries--;
+    localStorage.setItem("numListEntries", numListEntries);
+    saveList();
+  });
 
   $("input[name=advOptions]").click(function(){
     if($(this).is(":checked")){
@@ -184,6 +180,7 @@ $(document).ready(function(){
       }
     });
     listEntries.detach().appendTo("#toDoList");
+    saveList();
   });
 
   $("#filterForm").submit(function(event){
@@ -201,7 +198,15 @@ $(document).ready(function(){
     if(filter === ""){
       filter = "important";
     }
-    $(".listEntry").not("." + filter).hide();
+
+    $(".listEntry").each(function(){
+      var entryClasses = $(this).prop("class").toLowerCase();
+      if(!entryClasses.includes(" " + filter + " ")
+        && entryClasses.slice(-(filter.length + 1), entryClasses.length) !== " " + filter){
+        $(this).hide();
+      }
+    });
+
     $("input[name=filterInput]").val("");
   });
 
@@ -221,5 +226,94 @@ $(document).ready(function(){
 
   $("#removeAll").click(function(){
     $(".listEntry").remove();
+    numListEntries = 0;
+    localStorage.setItem("numListEntries", numListEntries);
+    saveList();
   });
 });
+
+/* Functions ---------------------------------------------------------------- */
+
+function addEntry(txt){
+  var entryTxt = "<li>" + txt + "</li>";
+    
+  var dueInput_disp = "<input type='text' name='dueInput_disp'>";
+  var dueInput_sort = "<input type='text' name='dueInput_sort'>";
+  var addTag = "<div class='addTag'>";
+  addTag += "<input type='text' placeholder='Important' name='tagInput'>";
+  addTag += "<span class='glyphicon glyphicon-plus addTagBtn'></span>";
+  addTag += "</div>";
+
+  var entryDesc = "<div class='entryDesc'>" + dueInput_disp + dueInput_sort + addTag + "</div>";
+
+  var entryMain = "<div class='entryMain'>" + entryTxt + entryDesc + "</div>";
+
+  var entryCtrl = "<div class='entryCtrl'>";
+  entryCtrl += "<span class='glyphicon glyphicon-time dueBtn'></span>";
+  entryCtrl += "<span class='glyphicon glyphicon-tags showAddTag'></span>";
+  entryCtrl += "<span class='glyphicon glyphicon-remove rmvEntryBtn'></span>";
+  entryCtrl += "</div>"
+    
+  var listEntry = "<div class='listEntry'>" + entryMain + entryCtrl + "</div>";
+
+  $("#toDoList").append(listEntry);
+  $("input[name=entryTxt]").val("");
+
+  $("input[name=dueInput_disp]").hide();
+  $(".addTag").hide();
+}
+
+function addTag(tag, $listEntry){
+  var entryClasses = $listEntry.prop("class").toLowerCase();
+  if( !entryClasses.includes(" " + tag.toLowerCase() + " ") 
+    && entryClasses.slice(-(tag.length + 1), entryClasses.length) !== " " + tag.toLowerCase()){
+    $listEntry.find(".entryDesc").append("<div class='tag'>" + tag + "</div>");
+    $listEntry.addClass(tag);
+  }
+  $listEntry.find("input[name=tagInput]").val("");
+  $listEntry.find(".addTag").hide();
+  if($("#toDoList").hasClass("tags-hidden")){
+    $(".tag").hide();
+  }
+}
+
+function loadList(){
+  for(var i = 0; i < numListEntries; i++){
+    addEntry(localStorage.getItem("listEntryTxt" + i));
+    if(localStorage.getItem("listEntryTags" + i) === ""){
+      continue;
+    }
+    var tagArr = localStorage.getItem("listEntryTags" + i).split(" ");
+    for(var j = 0; j < tagArr.length; j++){
+      if(tagArr[j] === "due"){
+        var dueDate = localStorage.getItem("listEntryDue" + i);
+        $(".listEntry").eq(i).find(".entryDesc").prepend("<div class='tag dueTag'>" + dueDate + "</div>");
+        $(".listEntry").eq(i).addClass("due");
+        if($("#toDoList").hasClass("tags-hidden")){
+          $(".tag").hide();
+        }
+      } else{
+        addTag(tagArr[j], $(".listEntry").eq(i));       
+      }
+    }
+  }  
+}
+
+function saveList(){
+  for(var i = 0; i < numListEntries; i++){
+    localStorage.setItem("listEntryTxt" + i, $(".entryMain li").eq(i).text());
+    if($(".listEntry").eq(i).prop("class").length > 9){
+      var tags = $(".listEntry").eq(i).prop("class");
+      tags = tags.substring(10, tags.length);
+      localStorage.setItem("listEntryTags" + i, tags);
+      if($(".listEntry").eq(i).hasClass("due")){
+        var dueDate = $(".listEntry").eq(i).find(".dueTag").text()
+        localStorage.setItem("listEntryDue" + i, dueDate);
+      } else{
+        localStorage.removeItem("listEntryDue" + i);
+      }
+    } else{
+      localStorage.setItem("listEntryTags" + i, "");
+    }
+  }
+}
