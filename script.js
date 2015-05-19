@@ -148,13 +148,7 @@ $(document).ready(function(){
       var txt1 = $(entry1).find("li").text();
       var txt2 = $(entry2).find("li").text();
       if(!$(entry1).hasClass("due") && !$(entry2).hasClass("due")){
-        if(txt1 > txt2){
-          return 1;
-        } else if(txt2 > txt1){
-          return -1;
-        } else{
-          return 0;
-        }
+        return txt1.localeCompare(txt2);
       }
       else if(!$(entry1).hasClass("due")){
         return 1;
@@ -170,13 +164,7 @@ $(document).ready(function(){
       } else if(date2 > date1){
         return -1;
       } else{
-        if(txt1 > txt2){
-          return 1;
-        } else if(txt2 > txt1){
-          return -1;
-        } else{
-          return 0;
-        }
+        return txt1.localeCompare(txt2);
       }
     });
     listEntries.detach().appendTo("#toDoList");
