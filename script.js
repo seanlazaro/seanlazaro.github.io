@@ -12,6 +12,7 @@ $(document).ready(function(){
   $("input[name=listName]").hide();
   loadList();
   $("#listCtrl").hide();
+  $("#featuresList").hide();
 
 /* Events and Handlers ------------------------------------------------------ */
 
@@ -100,6 +101,10 @@ $(document).ready(function(){
   $(document).on("click", ".dueBtn", function(){
     $(this).parent().parent().find("input[name=dueInput_disp]").datepicker({
       onSelect: function(input, inst){
+        if($(this).parent().parent().parent().hasClass("due")){
+          $(this).parent().find(".dueTag").remove();
+          $(this).parent().parent().parent().removeClass("due");
+        }
         $(this).parent().parent().find(".entryDesc").prepend("<div class='tag dueTag'>" + input + "</div>");
         $(this).parent().parent().parent().addClass("due");
         if($("#toDoList").hasClass("tags-hidden")){
@@ -111,15 +116,8 @@ $(document).ready(function(){
       altField: $(this).parent().parent().find("input[name=dueInput_sort]"),
       altFormat: "yymmdd"
     });
-    
-    if($(this).parent().parent().hasClass("due")){
-      $(this).parent().parent().removeClass("due");
-      $(this).parent().parent().find(".dueTag").remove();
-      saveList();
-    }
-    else{
-      $(this).parent().parent().find("input[name=dueInput_disp]").show().focus().hide();
-    }
+
+    $(this).parent().parent().find("input[name=dueInput_disp]").show().focus().hide();
   });
 
   $(document).on("click", ".showAddTag", function(){
@@ -205,10 +203,10 @@ $(document).ready(function(){
   $("#toggleTags").click(function(){
     if($("#toDoList").hasClass("tags-hidden")){
       $("#toDoList").removeClass("tags-hidden");
-      $(".tag").show();
+      $("#toDoList").find(".tag").show();
     } else{
       $("#toDoList").addClass("tags-hidden");
-      $(".tag").hide();
+      $("#toDoList").find(".tag").hide();
     }
   });
 
@@ -217,6 +215,14 @@ $(document).ready(function(){
     numListEntries = 0;
     localStorage.setItem("numListEntries", numListEntries);
     saveList();
+  });
+
+  $("input[name=showFeaturesList]").click(function(){
+    if($(this).is(":checked")){
+      $("#featuresList").show();
+    } else{
+      $("#featuresList").hide();
+    }
   });
 });
 
@@ -252,12 +258,17 @@ function addEntry(txt){
 }
 
 function addTag(tag, $listEntry){
-  var entryClasses = $listEntry.prop("class").toLowerCase();
-  if( !entryClasses.includes(" " + tag.toLowerCase() + " ") 
-    && entryClasses.slice(-(tag.length + 1), entryClasses.length) !== " " + tag.toLowerCase()){
-    $listEntry.find(".entryDesc").append("<div class='tag'>" + tag + "</div>");
-    $listEntry.addClass(tag);
+  if($.trim(tag) === ""){
   }
+  else{
+    var entryClasses = $listEntry.prop("class").toLowerCase();
+    if( !entryClasses.includes(" " + tag.toLowerCase() + " ") 
+      && entryClasses.slice(-(tag.length + 1), entryClasses.length) !== " " + tag.toLowerCase()){
+      $listEntry.find(".entryDesc").append("<div class='tag'>" + tag + "</div>");
+      $listEntry.addClass(tag);
+    }
+  }
+  
   $listEntry.find("input[name=tagInput]").val("");
   $listEntry.find(".addTag").hide();
   if($("#toDoList").hasClass("tags-hidden")){

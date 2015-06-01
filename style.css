@@ -99,18 +99,19 @@ h1{
   width: 1.5em;
   text-align: center;
 }
-[name="advOptions"]{
+#hr2{
+  border-color: black;
+  margin-left: 0.45%;
+  margin-right: 0.45%;
+  margin-bottom: 1em;
+}
+[type="checkbox"]{
   position: relative;
   top: 0.15em;
 }
 #listCtrl{
   text-align: center;
   margin-top: 1em;
-}
-#hr2{
-  border-color: black;
-  margin-left: 0.45%;
-  margin-right: 0.45%;
   margin-bottom: 1em;
 }
 #listCtrl button{
@@ -121,7 +122,15 @@ h1{
 }
 #filterForm{
   display: inline-block;
+  margin-bottom: 0.5em;
 }
 [name="filterInput"]{
   width: 7.75em;
+}
+#featuresList{
+  text-align: left;
+  margin-top: 1em;
+}
+.helpGlyph{
+  margin-right: 0.2em;
 }

@@ -45,6 +45,26 @@
         <button type="button" id="toggleTags">Toggle Tags</button>
         <button type="button" id="removeAll">Remove All</button>
       </div>
+      Show list of features <input type="checkbox" name="showFeaturesList">
+      <ul id="featuresList">
+        <li>Change the title of the list by clicking on it and typing a new title.</li>
+        <li>Click on an entry to cross it out. Click on it again to undo.</li>
+        <li>
+          <span class='glyphicon glyphicon-time helpGlyph'></span> allows an entry to be tagged with a due date.
+        </li>
+        <li>
+          <span class='glyphicon glyphicon-tags helpGlyph'></span> allows an entry to be tagged according to user input.
+        </li>
+        <li>An entry can quickly be tagged <em>Important</em> by adding a tag with no user input.</li>
+        <li><div class='tag'>Example Tag</div> Click on a tag to delete it.</li>
+        <li><span class='glyphicon glyphicon-remove helpGlyph'></span> deletes the entry.</li>
+        <li>The <em>Sort</em> button sorts the list by due date and then alphabetically.</li>
+        <li>The <em>Filter</em> button hides the entries that don't have a tag that matches the user input.</li>
+        <li>Filtering the list with no input will hide all non-<em>Important</em> entries.</li>
+        <li>The <em>Show All</em> button shows all entries hidden by filtering.</li>
+        <li>The <em>Toggle Tags</em> button toggles the visibility of all tags in the list.</li>
+        <li>The <em>Remove All</em> button deletes all entries.</li>
+      </ul>
     </div>
   </div>
 </div>
