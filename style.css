@@ -105,6 +105,9 @@ h1{
   margin-right: 0.45%;
   margin-bottom: 1em;
 }
+#advOptions{
+  display: inline-block;
+}
 [type="checkbox"]{
   position: relative;
   top: 0.15em;
@@ -126,6 +129,12 @@ h1{
 }
 [name="filterInput"]{
   width: 7.75em;
+}
+#toggleTags{
+  margin-bottom: 0.5em;
+}
+#showFeaturesList{
+  display: inline-block;
 }
 #featuresList{
   text-align: left;
