@@ -225,7 +225,7 @@ $(document).ready(function(){
 function addEntry(txt){
   var entryTxt = "<li>" + txt + "</li>";
     
-  var dueInput_disp = "<input type='text' name='dueInput_disp'>";
+  var dueInput_disp = "<input type='text' readonly='true' name='dueInput_disp'>";
   var dueInput_sort = "<input type='text' name='dueInput_sort'>";
   var addTag = "<div class='addTag'>";
   addTag += "<input type='text' placeholder='Important' name='tagInput'>";
@@ -237,9 +237,9 @@ function addEntry(txt){
   var entryMain = "<div class='entryMain'>" + entryTxt + entryDesc + "</div>";
 
   var entryCtrl = "<div class='entryCtrl'>";
-  entryCtrl += "<span class='glyphicon glyphicon-time dueBtn'></span>";
-  entryCtrl += "<span class='glyphicon glyphicon-tags showAddTag'></span>";
-  entryCtrl += "<span class='glyphicon glyphicon-remove rmvEntryBtn'></span>";
+  entryCtrl += "<span class='glyphicon glyphicon-time ctrlBtn dueBtn'></span>";
+  entryCtrl += "<span class='glyphicon glyphicon-tags ctrlBtn showAddTag'></span>";
+  entryCtrl += "<span class='glyphicon glyphicon-remove ctrlBtn rmvEntryBtn'></span>";
   entryCtrl += "</div>"
     
   var listEntry = "<div class='listEntry'>" + entryMain + entryCtrl + "</div>";
@@ -247,8 +247,8 @@ function addEntry(txt){
   $("#toDoList").append(listEntry);
   $("input[name=entryTxt]").val("");
 
-  $("input[name=dueInput_disp]").hide();
-  $(".addTag").hide();
+  /*$("input[name=dueInput_disp]").hide();
+  $(".addTag").hide();*/
 }
 
 function addTag(tag, $listEntry){
