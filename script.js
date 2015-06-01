@@ -247,8 +247,8 @@ function addEntry(txt){
   $("#toDoList").append(listEntry);
   $("input[name=entryTxt]").val("");
 
-  /*$("input[name=dueInput_disp]").hide();
-  $(".addTag").hide();*/
+  $("input[name=dueInput_disp]").hide();
+  $(".addTag").hide();
 }
 
 function addTag(tag, $listEntry){
