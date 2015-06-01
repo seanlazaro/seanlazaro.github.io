@@ -41,7 +41,7 @@ h1{
   width: 84%;
 }
 #addEntryBtn{
-  width: 5.6em;
+  width: 5.8em;
   height: 2.5em;
 }
 #toDoList{
@@ -142,4 +142,25 @@ h1{
 }
 .helpGlyph{
   margin-right: 0.2em;
+}
+
+/*disables certain bootstrap classes that interfere with tag function*/
+.progress{
+  height: initial;
+  margin-bottom: initial;
+  overflow: initial;
+  background-color: initial;
+  border-radius: initial;
+  -webkit-box-shadow: initial;
+          box-shadow: initial;
+}
+.well{
+  min-height: initial;
+  padding: initial;
+  margin-bottom: initial;
+  background-color:initial;
+  border: initial;
+  border-radius: initial;
+  -webkit-box-shadow: initial;
+          box-shadow: initial;
 }

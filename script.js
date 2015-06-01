@@ -187,7 +187,7 @@ $(document).ready(function(){
 
     $(".listEntry").each(function(){
       var entryClasses = $(this).prop("class").toLowerCase();
-      if(!entryClasses.includes(" " + filter + " ")
+      if(entryClasses.indexOf(" " + filter + " ") === -1 
         && entryClasses.slice(-(filter.length + 1), entryClasses.length) !== " " + filter){
         $(this).hide();
       }
@@ -262,7 +262,7 @@ function addTag(tag, $listEntry){
   }
   else{
     var entryClasses = $listEntry.prop("class").toLowerCase();
-    if( !entryClasses.includes(" " + tag.toLowerCase() + " ") 
+    if(entryClasses.indexOf(" " + tag.toLowerCase() + " ") === -1
       && entryClasses.slice(-(tag.length + 1), entryClasses.length) !== " " + tag.toLowerCase()){
       $listEntry.find(".entryDesc").append("<div class='tag'>" + tag + "</div>");
       $listEntry.addClass(tag);
