@@ -1,0 +1,38 @@
+#mainCol{
+  border: solid black;
+  height: 100vh;
+  text-align: center;
+}
+#howToPlayBtn{
+  display: block;
+  margin-bottom: 1em;
+  text-decoration: underline;
+}
+#results{
+  background-color: #e6e6e6;
+  height: 50vh;
+  width: 80%;
+  display: inline-block;
+  text-align: left;
+  overflow: auto;
+  margin-top: 1em;
+}
+hr{
+	border-color: black;
+	margin-top: 0.25em;
+	margin-bottom: 0.25em;
+	width: 90%;
+}
+#howToPlay{
+  background-color: #000;
+  color: #fff;
+  padding: 1em;
+  position: relative;
+  top: -29em;
+}
+#howToPlay > .glyphicon-remove{
+  display: inline-block;
+  position: absolute;
+  top: 0.25em;
+  right: 0.25em;
+}

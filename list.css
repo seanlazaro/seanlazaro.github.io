@@ -1,0 +1,150 @@
+#mainCol{
+  border: solid black;
+  height: 100vh;
+  overflow: auto;
+  position: relative; /* used to position listName */
+  text-align: center;
+}
+[name="listName"]{
+  font-size: 2em;
+  position: absolute;
+  top: 0.5em;
+  left: 0;
+  margin-left: 20%;
+  margin-right: 20%;
+  z-index: 1;
+  text-align: center;
+  width: 60%;
+}
+#mainForm{
+  margin-bottom: 1em;
+  text-align: center;
+}
+[name="entryTxt"]{
+  display: inline-block;
+  width: 84%;
+}
+#addEntryBtn{
+  width: 5.8em;
+  height: 2.5em;
+}
+#toDoList{
+  padding: 0;
+  list-style-type: none;
+}
+.listEntry{
+  margin-bottom: 0.5em;
+  text-align: left;
+  position: relative; /* used to position [name="dueInput_disp"] and .addTag */
+}
+.entryMain{
+	display: inline-block;
+  width: 85%;
+	padding-right: 1%;
+}
+[name="dueInput_disp"]{ /* positions datepicker */
+  position: absolute;
+  top: 0;
+  z-index: 1;
+}
+[name="dueInput_sort"]{
+  display: none;
+}
+.tag{
+  display: inline-block;
+  background-color: #b2b2b2;
+  color: white;
+  font-size: 0.85em;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+  border-radius: 10%;
+  margin-right: 0.25em;
+  margin-bottom: 0.25em;
+}
+.dueTag{
+  background-color: #6b6b6b;
+}
+.addTag{
+  position: absolute;
+  top: 0;
+  z-index: 1;
+}
+.addTagBtn{
+  margin-left: 0.5em;
+}
+.entryCtrl{
+  display: inline-block;
+  width: 15%;
+  text-align: center;
+  vertical-align: top;
+}
+.ctrlBtn{
+  display: inline-block;
+  width: 1.5em;
+  text-align: center;
+}
+#hr2{
+  border-color: black;
+  margin-left: 0.45%;
+  margin-right: 0.45%;
+  margin-bottom: 1em;
+}
+#advOptions{
+  display: inline-block;
+}
+[type="checkbox"]{
+  position: relative;
+  top: 0.15em;
+}
+#listCtrl{
+  text-align: center;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+#listCtrl button{
+  margin-right: 0.85em;
+}
+#sortBtn{
+  margin-left: 0.75em;
+}
+#filterForm{
+  display: inline-block;
+  margin-bottom: 0.5em;
+}
+[name="filterInput"]{
+  width: 7.75em;
+}
+#toggleTags{
+  margin-bottom: 0.5em;
+}
+#showFeaturesList{
+  display: inline-block;
+}
+#featuresList{
+  text-align: left;
+  margin-top: 1em;
+}
+.helpGlyph{
+  margin-right: 0.2em;
+}
+
+/*disables certain bootstrap classes that interfere with tag function*/
+.progress{
+  height: initial;
+  margin-bottom: initial;
+  overflow: initial;
+  background-color: initial;
+  border-radius: initial;
+  -webkit-box-shadow: initial;
+          box-shadow: initial;
+}
+.well{
+  min-height: initial;
+  padding: initial;
+  margin-bottom: initial;
+  background-color:initial;
+  border: initial;
+  border-radius: initial;
+  -webkit-box-shadow: initial;
+          box-shadow: initial;
+}

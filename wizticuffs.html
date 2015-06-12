@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  <link rel="stylesheet" href="header.css">
+  <link rel="stylesheet" href="wizticuffs.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+  <script src="wizticuffs.js"></script>
+
+  <title>Wizticuffs</title>
+</head>
+<body>
+
+<h1>Sean Lazaro</h1>
+<p id="email">seanchristienlazaro@gmail.com</p>
+
+<ul class="nav nav-pills">
+  <li><a href="/">List</a></li>
+  <li class="active"><a href="wizticuffs.html">Wizticuffs</a></li>
+</ul>
+
+<hr id="hr1">
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3" id="mainCol">
+    	<h2>Wizticuffs</h2>
+      <span id="howToPlayBtn">How to Play</span>
+    	<div id="moveSelect">
+    		<button type="button" id="charge">Charge</button>
+    		<button type="button" id="fireball">Fireball</button>
+    		<button type="button" id="barrier">Barrier</button>
+        <button type="button" id="thunderbolt">Thunderbolt</button>
+        <button type="button" id="reflect">Reflect</button>
+        <button type="button" id="summon">Summon</button>
+    	</div>
+    	<div id="chargeCount">
+    		<span id="userCharges">You have 0 charges.</span>
+    		<span id="oppCharges">Your opponent has 0 charges.</span>
+    	</div>
+    	<div id="results"></div>
+      <div id="howToPlay">
+        <h4>How to Play</h4>
+        <p>In Wizticuffs, the player's objective is to defeat the opponent by successfully using an attack spell.</p>
+        <p><em>Charge</em> causes the player to gather energy, which are needed to use attack spells. The player is vulnerable to attack spells when <em>Charge</em> is used.</p>
+        <p><em>Fireball</em> is a basic attack spell and requires one charge to use. If both the player and the opponent use attack spells, the game will result in a tie.</p>
+        <p><em>Barrier</em> is a defensive spell which can block <em>Fireballs</em>.</p>
+        <p><em>Thunderbolt</em> is an advanced attack spell and requires two charges to use. It has the ability to pierce through <em>Barriers</em>.</p>
+        <p><em>Reflect</em> is a defensive spell which can redirect <em>Thunderbolts</em> back towards the opponent. However, it does not have the ability to block <em>Fireballs</em>.</p>
+        <p><em>Summon</em> is the ultimate attack spell and requires four charges to use. The use of <em>Summon</em> always results in a win, unless both the player and the opponent use <em>Summon</em>. In that case, the game will result in a tie.</p>
+        <span class="glyphicon glyphicon-remove"></span>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+</body>
+</html>
