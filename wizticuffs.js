@@ -188,7 +188,7 @@ function dispResult(userMove, oppMove){
 					break;
 				case "fireball":
 					$("#results").append("You were incinerated! You lose.<br>");
-					$("#results").append("<hr>");
+					$("#results").append("<hr id='gameDispHr'>");
 					$("#results").scrollTop($("#results")[0].scrollHeight);
 					numUserCharges = 0;
 					numOppCharges = 0;
@@ -198,7 +198,7 @@ function dispResult(userMove, oppMove){
 					break;
 				case "thunderbolt":
 					$("#results").append("You received lethal damage! You lose.<br>");
-					$("#results").append("<hr>");
+					$("#results").append("<hr id='gameDispHr'>");
 					$("#results").scrollTop($("#results")[0].scrollHeight);
 					numUserCharges = 0;
 					numOppCharges = 0;
@@ -208,7 +208,7 @@ function dispResult(userMove, oppMove){
 					break;
 				case "summon":
 					$("#results").append("The dragon striked you with its claws and devoured you. You lose.<br>");
-					$("#results").append("<hr>");
+					$("#results").append("<hr id='gameDispHr'>");
 					$("#results").scrollTop($("#results")[0].scrollHeight);
 					numUserCharges = 0;
 					numOppCharges = 0;
@@ -220,7 +220,7 @@ function dispResult(userMove, oppMove){
 			switch(oppMove){
 				case "charge":
 					$("#results").append("Your opponent was incinerated! You win!<br>");
-					$("#results").append("<hr>");
+					$("#results").append("<hr id='gameDispHr'>");
 					$("#results").scrollTop($("#results")[0].scrollHeight);
 					numUserCharges = 0;
 					numOppCharges = 0;
@@ -228,7 +228,7 @@ function dispResult(userMove, oppMove){
 					break;
 				case "fireball":
 					$("#results").append("You and your opponent were both incinerated! It's a tie.<br>");
-					$("#results").append("<hr>");
+					$("#results").append("<hr id='gameDispHr'>");
 					$("#results").scrollTop($("#results")[0].scrollHeight);
 					numUserCharges = 0;
 					numOppCharges = 0;
@@ -240,7 +240,7 @@ function dispResult(userMove, oppMove){
 					break;
 				case "thunderbolt":
 					$("#results").append("Your opponent was incinerated, but you received lethal damage! It's a tie.<br>");
-					$("#results").append("<hr>");
+					$("#results").append("<hr id='gameDispHr'>");
 					$("#results").scrollTop($("#results")[0].scrollHeight);
 					numUserCharges = 0;
 					numOppCharges = 0;
@@ -248,7 +248,7 @@ function dispResult(userMove, oppMove){
 					break;
 				case "reflect":
 					$("#results").append("Your opponent's aura did nothing against your fireball. Your opponent was incinerated! You win!<br>");
-					$("#results").append("<hr>");
+					$("#results").append("<hr id='gameDispHr'>");
 					$("#results").scrollTop($("#results")[0].scrollHeight);
 					numUserCharges = 0;
 					numOppCharges = 0;
@@ -256,7 +256,7 @@ function dispResult(userMove, oppMove){
 					break;
 				case "summon":
 					$("#results").append("The dragon was hit by your fireball but didn't even seem to notice it. The dragon striked you with its claws and devoured you. You lose.<br>");
-					$("#results").append("<hr>");
+					$("#results").append("<hr id='gameDispHr'>");
 					$("#results").scrollTop($("#results")[0].scrollHeight);
 					numUserCharges = 0;
 					numOppCharges = 0;
@@ -276,7 +276,7 @@ function dispResult(userMove, oppMove){
 					break;
 				case "thunderbolt":
 					$("#results").append("Your opponent's thunderbolt pierced through your barrier. You received lethal damage! You lose.<br>");
-					$("#results").append("<hr>");
+					$("#results").append("<hr id='gameDispHr'>");
 					$("#results").scrollTop($("#results")[0].scrollHeight);
 					numUserCharges = 0;
 					numOppCharges = 0;
@@ -286,7 +286,7 @@ function dispResult(userMove, oppMove){
 					break;
 				case "summon":
 					$("#results").append("The dragon striked you with its claws, easily destroying your barrier, and then devoured you. You lose.<br>");
-					$("#results").append("<hr>");
+					$("#results").append("<hr id='gameDispHr'>");
 					$("#results").scrollTop($("#results")[0].scrollHeight);
 					numUserCharges = 0;
 					numOppCharges = 0;
@@ -298,7 +298,7 @@ function dispResult(userMove, oppMove){
 			switch(oppMove){
 				case "charge":
 					$("#results").append("Your opponent received lethal damage! You win!<br>");
-					$("#results").append("<hr>");
+					$("#results").append("<hr id='gameDispHr'>");
 					$("#results").scrollTop($("#results")[0].scrollHeight);
 					numUserCharges = 0;
 					numOppCharges = 0;
@@ -306,7 +306,7 @@ function dispResult(userMove, oppMove){
 					break;
 				case "fireball":
 					$("#results").append("Your opponent received lethal damage, but you were incinerated! It's a tie.<br>");
-					$("#results").append("<hr>");
+					$("#results").append("<hr id='gameDispHr'>");
 					$("#results").scrollTop($("#results")[0].scrollHeight);
 					numUserCharges = 0;
 					numOppCharges = 0;
@@ -314,7 +314,7 @@ function dispResult(userMove, oppMove){
 					break;
 				case "barrier":
 					$("#results").append("Your thunderbolt pierced through your opponent's barrier. Your opponent received lethal damage! You win!<br>");
-					$("#results").append("<hr>");
+					$("#results").append("<hr id='gameDispHr'>");
 					$("#results").scrollTop($("#results")[0].scrollHeight);
 					numUserCharges = 0;
 					numOppCharges = 0;
@@ -322,7 +322,7 @@ function dispResult(userMove, oppMove){
 					break;
 				case "thunderbolt":
 					$("#results").append("You and your opponent both received lethal damage! It's a tie.<br>");
-					$("#results").append("<hr>");
+					$("#results").append("<hr id='gameDispHr'>");
 					$("#results").scrollTop($("#results")[0].scrollHeight);
 					numUserCharges = 0;
 					numOppCharges = 0;
@@ -330,7 +330,7 @@ function dispResult(userMove, oppMove){
 					break;
 				case "reflect":
 					$("#results").append("Your opponent's aura bent the trajectory of your thunderbolt and sent it back at you. You received lethal damage! You lose.<br>");
-					$("#results").append("<hr>");
+					$("#results").append("<hr id='gameDispHr'>");
 					$("#results").scrollTop($("#results")[0].scrollHeight);
 					numUserCharges = 0;
 					numOppCharges = 0;
@@ -338,7 +338,7 @@ function dispResult(userMove, oppMove){
 					break;
 				case "summon":
 					$("#results").append("The dragon was hit by your thunderbolt but didn't even seem to notice it. The dragon striked you with its claws and devoured you. You lose.<br>");
-					$("#results").append("<hr>");
+					$("#results").append("<hr id='gameDispHr'>");
 					$("#results").scrollTop($("#results")[0].scrollHeight);
 					numUserCharges = 0;
 					numOppCharges = 0;
@@ -352,7 +352,7 @@ function dispResult(userMove, oppMove){
 					break;
 				case "fireball":
 					$("#results").append("Your aura did nothing against your opponent's fireball. You were incinerated! You lose.<br>");
-					$("#results").append("<hr>");
+					$("#results").append("<hr id='gameDispHr'>");
 					$("#results").scrollTop($("#results")[0].scrollHeight);
 					numUserCharges = 0;
 					numOppCharges = 0;
@@ -362,7 +362,7 @@ function dispResult(userMove, oppMove){
 					break;
 				case "thunderbolt":
 					$("#results").append("Your aura bent the trajectory of your opponent's thunderbolt and sent it back at them. Your opponent received lethal damage! You win!<br>");
-					$("#results").append("<hr>");
+					$("#results").append("<hr id='gameDispHr'>");
 					$("#results").scrollTop($("#results")[0].scrollHeight);
 					numUserCharges = 0;
 					numOppCharges = 0;
@@ -372,7 +372,7 @@ function dispResult(userMove, oppMove){
 					break;
 				case "summon":
 					$("#results").append("Your aura did nothing against the dragon. The dragon striked you with its claws and devoured you. You lose.<br>");
-					$("#results").append("<hr>");
+					$("#results").append("<hr id='gameDispHr'>");
 					$("#results").scrollTop($("#results")[0].scrollHeight);
 					numUserCharges = 0;
 					numOppCharges = 0;
@@ -384,7 +384,7 @@ function dispResult(userMove, oppMove){
 			switch(oppMove){
 				case "charge":
 					$("#results").append("The dragon striked your opponent with its claws and devoured your opponent. You win!<br>");
-					$("#results").append("<hr>");
+					$("#results").append("<hr id='gameDispHr'>");
 					$("#results").scrollTop($("#results")[0].scrollHeight);
 					numUserCharges = 0;
 					numOppCharges = 0;
@@ -392,7 +392,7 @@ function dispResult(userMove, oppMove){
 					break;
 				case "fireball":
 					$("#results").append("The dragon was hit by the fireball but didn't even seem to notice it. The dragon striked your opponent with its claws and devoured your opponent. You win!<br>");
-					$("#results").append("<hr>");
+					$("#results").append("<hr id='gameDispHr'>");
 					$("#results").scrollTop($("#results")[0].scrollHeight);
 					numUserCharges = 0;
 					numOppCharges = 0;
@@ -400,7 +400,7 @@ function dispResult(userMove, oppMove){
 					break;
 				case "barrier":
 					$("#results").append("The dragon striked your opponent with its claws, easily destroying the barrier, and then devoured your opponent. You win!<br>");
-					$("#results").append("<hr>");
+					$("#results").append("<hr id='gameDispHr'>");
 					$("#results").scrollTop($("#results")[0].scrollHeight);
 					numUserCharges = 0;
 					numOppCharges = 0;
@@ -408,7 +408,7 @@ function dispResult(userMove, oppMove){
 					break;
 				case "thunderbolt":
 					$("#results").append("The dragon was hit by the thunderbolt but didn't even seem to notice it. The dragon striked your opponent with its claws and devoured your opponent. You win!<br>");
-					$("#results").append("<hr>");
+					$("#results").append("<hr id='gameDispHr'>");
 					$("#results").scrollTop($("#results")[0].scrollHeight);
 					numUserCharges = 0;
 					numOppCharges = 0;
@@ -416,7 +416,7 @@ function dispResult(userMove, oppMove){
 					break;
 				case "reflect":
 					$("#results").append("The aura did nothing against the dragon. The dragon striked your opponent with its claws and devoured your opponent. You win!<br>");
-					$("#results").append("<hr>");
+					$("#results").append("<hr id='gameDispHr'>");
 					$("#results").scrollTop($("#results")[0].scrollHeight);
 					numUserCharges = 0;
 					numOppCharges = 0;
@@ -424,7 +424,7 @@ function dispResult(userMove, oppMove){
 					break;
 				case "summon":
 					$("#results").append("The two dragons began fighting each other fiercely. You and your opponent were unable to escape being caught up in the fight and were both crushed. It's a tie.<br>");
-					$("#results").append("<hr>");
+					$("#results").append("<hr id='gameDispHr'>");
 					$("#results").scrollTop($("#results")[0].scrollHeight);
 					numUserCharges = 0;
 					numOppCharges = 0;
@@ -433,6 +433,6 @@ function dispResult(userMove, oppMove){
 			}
 			break;
 	}
-	$("#results").append("<hr>");
+	$("#results").append("<hr id='gameDispHr'>");
 	$("#results").scrollTop($("#results")[0].scrollHeight);
 }

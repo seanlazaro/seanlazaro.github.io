@@ -1,5 +1,6 @@
 #mainCol{
   border: solid black;
+  border-width: 0.5vh;
   height: 100vh;
   text-align: center;
 }
@@ -17,7 +18,7 @@
   overflow: auto;
   margin-top: 1em;
 }
-hr{
+#gameDispHr{
 	border-color: black;
 	margin-top: 0.25em;
 	margin-bottom: 0.25em;
@@ -26,13 +27,20 @@ hr{
 #howToPlay{
   background-color: #000;
   color: #fff;
-  padding: 1em;
-  position: relative;
-  top: -29em;
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 0.5vh;
+  padding: 0.5em;
+  height: 98vh;
+  overflow: auto;
 }
 #howToPlay > .glyphicon-remove{
   display: inline-block;
   position: absolute;
-  top: 0.25em;
-  right: 0.25em;
+  top: 0.5vh;
+  right: 0.5vh;
+}
+h3{
+  text-decoration: underline;
 }
